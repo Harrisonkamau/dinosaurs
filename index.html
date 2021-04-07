@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./app.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+  <title>Infographic | Home</title>
+</head>
+<body>
+  <!------------- Nav Section  ---------------->
+  <header class="nav">
+    <div class="nav-brand">
+      <a nohref>Infographic Center</a>
+    </div>
+
+    <div class="nav-item">
+      <a href="" class="nav-item__link">Get Started</a>
+    </div>
+  </header>
+
+  <!------------- Form Section  --------------->
+  <div id="user-form" class="formPanel">
+      <h3 class="form-title">Provide User Data</h3>
+      <hr class="form-title__line">
+      <form>
+        <div class="form-label">
+          <label for="Name" >Name</label>
+        </div>
+        <div class="form-input__main">
+          <input type="text" placeholder="Enter Full Name" class="form-input" id="name">
+          <span class="form-input__error">This field is required</span>
+        </div>
+        <div class="form-label">
+          <label for="Name" >Weight (in KGs)</label>
+        </div>
+        <div class="form-input__main">
+          <input type="number" placeholder="Enter Weight" class="form-input" id="weight">
+          <span class="form-input__error">This field is required</span>
+        </div>
+        <h3>Height</h3>
+        <div class="form-label">
+          <label for="Name" >Feet</label>
+        </div>
+        <div class="form-input__main">
+          <input name="fullName" type="number" placeholder="Enter Height in Feet" class="form-input" id="height-feet">
+          <span class="form-input__error">This field is required</span>
+        </div>
+        <div class="form-label">
+          <label for="Name" class="form-label">Inches</label>
+        </div>
+        <div class="form-input__main">
+          <input type="number" placeholder="Enter Height in inches" class="form-input" id="height-inches">
+          <span class="form-input__error">This field is required</span>
+        </div>
+        <div class="form-label">
+          <label for="Name" >Diet</label>
+        </div>
+        <div class="form-input__main">
+          <select name="diet" id="diet" class="form-input" id="diet">
+            <option value="">Enter Diet</option>
+            <option value="herbivorous">Herbivorous</option>
+            <option value="omnivorous">Omnivorous</option>
+            <option value="carnivorous">Carnivorous</option>
+          </select>
+          <span class="form-input__error">This field is required</span>
+        </div>
+        <div>
+          <button class="btn" id="submitButton">Let us compare</button>
+        </div>
+      </form>
+
+  </div>
+
+  <!------------- Tiles Section  --------------->
+
+  <!------------- Scripts  --------------->
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

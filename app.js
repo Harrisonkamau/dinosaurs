@@ -40,6 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } else {
       form.hide();
+
+      // CLEAR ANY ERROR SPANS
+      const errorSpans = document.getElementsByClassName('form-input__span');
+      const parentDivs = document.getElementsByClassName('form-input');
+      Array.from(errorSpans).forEach((errorSpan) => errorSpan.innerText = '');
+      Array.from(parentDivs).forEach((parentDiv) => parentDiv.classList.remove('form-input_error_border'));
+
+
       // renderTilesGrid();
     }
   });

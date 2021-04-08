@@ -22,7 +22,7 @@ function _validateWeight(weight) {
     return { isValid: true };
   }
 
-  return { isValid: false, message: 'Weight must greater than zero' };
+  return { isValid: false, message: 'must be greater than zero' };
 }
 
 function _validateDiet(diet) {
@@ -33,7 +33,7 @@ function _validateDiet(diet) {
 
   return {
     isValid: false,
-    message: 'Diet should be either "herbivorous", "omnivorous" or "carnivorous"',
+    message: 'should include either "herbivorous", "omnivorous" or "carnivorous"',
   };
 }
 
@@ -48,7 +48,7 @@ function _validateHeight(height) {
     } else {
       const value = Number(height[field]);
       if (value < 1) {
-        errors.push({ [field]: `${field} must be greater than zero` });
+        errors.push({ [field]: 'must be greater than zero' });
         isValid = false;
       }
     }

@@ -22,4 +22,4 @@ Start up the server and go to the root route. You should be able to see somethin
 ![Form Input](./screenshots/form-input.png)
 
 ##### Validation errors
-![Validation errors](./screenshots/validation-errors.png)
+![Validation errors](./screenshots/validation_errors.png)

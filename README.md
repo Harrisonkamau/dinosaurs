@@ -16,5 +16,10 @@ Use either:
 Start up the server and go to the root route. You should be able to see something like this(hopefully):
 ![Get Started Page](./screenshots/get-started.png)
 
-## Form input styling
+
+### Demo
+#####  Form input styling
 ![Form Input](./screenshots/form-input.png)
+
+##### Validation errors
+![Validation errors](./screenshots/validation-errors.png)

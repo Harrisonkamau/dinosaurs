@@ -3,6 +3,8 @@ import validateForm from './validateForm.js';
 import populateValidationErrors from './populateValidationErrors.js';
 import form from './handleFormView.js';
 
+let displayErrors = false;
+
 document.addEventListener('DOMContentLoaded', () => {
   const submitButton = document.getElementById('submitButton');
   const getStarted = document.getElementById('get-started');
@@ -29,10 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const result = validateForm(userData);
 
     if (result && result.errors && Object.values(result.errors).length > 0) {
-      populateValidationErrors({
-        errors: result.errors,
-        fields: ['name', 'weight', 'diet', 'inches', 'feet'],
-      });
+      if (!displayErrors) {
+        populateValidationErrors({
+          errors: result.errors,
+          fields: ['name', 'weight', 'diet', 'inches', 'feet'],
+        });
+        displayErrors = true;
+      }
     } else {
       form.hide();
       // renderTilesGrid();

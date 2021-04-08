@@ -88,7 +88,7 @@ body {
   margin: 14px 0;
 }
 
-.form-title__line{
+.form-title__line {
   display: block;
   border: none;
   height: 1px;
@@ -139,7 +139,20 @@ body {
   border-bottom: solid 2px #006bb4;
 }
 
-.form-input__error {
-  color: red;
+.form-input_error_border {
+  outline: none;
+  border-bottom: solid 2px #bd271e;
+}
+
+.form-input__span {
+  color: #bd271e;
+  font-size: 12px;
+}
+
+.hideForm {
   display: none;
+}
+
+.showForm {
+  display: block;
 }

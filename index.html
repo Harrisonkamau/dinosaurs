@@ -15,7 +15,7 @@
     </div>
 
     <div class="nav-item">
-      <a href="" class="nav-item__link">Get Started</a>
+      <a href="" class="nav-item__link" id="get-started">Create New Infographic</a>
     </div>
   </header>
 
@@ -27,43 +27,38 @@
         <div class="form-label">
           <label for="Name" >Name</label>
         </div>
-        <div class="form-input__main">
+        <div class="form-input__main" id="name-parent-div">
           <input type="text" placeholder="Enter Full Name" class="form-input" id="name">
-          <span class="form-input__error">This field is required</span>
         </div>
         <div class="form-label">
           <label for="Name" >Weight (in KGs)</label>
         </div>
-        <div class="form-input__main">
+        <div class="form-input__main" id="weight-parent-div">
           <input type="number" placeholder="Enter Weight" class="form-input" id="weight">
-          <span class="form-input__error">This field is required</span>
         </div>
         <h3>Height</h3>
         <div class="form-label">
           <label for="Name" >Feet</label>
         </div>
-        <div class="form-input__main">
-          <input name="fullName" type="number" placeholder="Enter Height in Feet" class="form-input" id="height-feet">
-          <span class="form-input__error">This field is required</span>
+        <div class="form-input__main" id="feet-parent-div">
+          <input name="fullName" type="number" placeholder="Enter Height in Feet" class="form-input" id="feet">
         </div>
         <div class="form-label">
           <label for="Name" class="form-label">Inches</label>
         </div>
-        <div class="form-input__main">
-          <input type="number" placeholder="Enter Height in inches" class="form-input" id="height-inches">
-          <span class="form-input__error">This field is required</span>
+        <div class="form-input__main" id="inches-parent-div">
+          <input type="number" placeholder="Enter Height in inches" class="form-input" id="inches">
         </div>
         <div class="form-label">
           <label for="Name" >Diet</label>
         </div>
-        <div class="form-input__main">
+        <div class="form-input__main" id="diet-parent-div">
           <select name="diet" id="diet" class="form-input" id="diet">
             <option value="">Enter Diet</option>
             <option value="herbivorous">Herbivorous</option>
             <option value="omnivorous">Omnivorous</option>
             <option value="carnivorous">Carnivorous</option>
           </select>
-          <span class="form-input__error">This field is required</span>
         </div>
         <div>
           <button class="btn" id="submitButton">Let us compare</button>

@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const heightInches = document.getElementById('inches');
   const diet = document.getElementById('diet');
 
-  // handle form validation, grid display & form hiding
+  // handle form validation, grid display and form hiding
   submitButton.addEventListener('click', (event) => {
     event.preventDefault();
 

@@ -1,4 +1,5 @@
 # Dinosaurs Project
+[![JS Linter](https://github.com/Harrisonkamau/dinosaurs/actions/workflows/linter.yml/badge.svg?branch=main)](https://github.com/Harrisonkamau/dinosaurs/actions/workflows/linter.yml)
 
 ### Technologies
 - HTML

@@ -13,4 +13,4 @@ jobs:
         with:
           reportIgnoredFiles: true
           issueSummaryOnlyOnEvent: true
-          extensions: "['.js']"
+          extensions: ".js"

@@ -2,10 +2,12 @@
 import validateForm from './validateForm.js';
 import populateValidationErrors from './populateValidationErrors.js';
 import form from './handleFormView.js';
-
-let displayErrors = false;
+import grid from './handleTilesView.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // grid should be hidden by default
+  grid.hide();
+
   const submitButton = document.getElementById('submitButton');
   const getStarted = document.getElementById('get-started');
   const name = document.getElementById('name');
@@ -31,13 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const result = validateForm(userData);
 
     if (result && result.errors && Object.values(result.errors).length > 0) {
-      if (!displayErrors) {
-        populateValidationErrors({
-          errors: result.errors,
-          fields: ['name', 'weight', 'diet', 'inches', 'feet'],
-        });
-        displayErrors = true;
-      }
+      populateValidationErrors({
+        errors: result.errors,
+        fields: ['name', 'weight', 'diet', 'inches', 'feet'],
+      });
     } else {
       form.hide();
 
@@ -47,8 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
       Array.from(errorSpans).forEach((errorSpan) => errorSpan.innerText = '');
       Array.from(parentDivs).forEach((parentDiv) => parentDiv.classList.remove('form-input_error_border'));
 
-
-      // renderTilesGrid();
+      grid.show();
     }
   });
 

@@ -16,6 +16,9 @@ Use either:
 Start up the server and go to the root route. You should be able to see something like this(hopefully):
 ![Get Started Page](./screenshots/get-started.png)
 
+And see this when you submit a valid form:
+![Grid Tiles](./screenshots/basic-grid.png)
+
 
 ### Demo
 #####  Form input styling

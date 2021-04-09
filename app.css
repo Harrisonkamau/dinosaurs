@@ -58,14 +58,6 @@ body {
   border-style: solid;
 }
 
-/* .btn:hover,
-.btn:active {
-  border-radius: 4px;
-  color: #006bb4;
-  border: solid 1px #006bb4;
-  background-color: #fff;
-} */
-
 /********** FORM INPUTS ************/
 .formPanel {
   width: 30%;
@@ -79,7 +71,6 @@ body {
   padding: 24px;
   border: 1px solid #d3dae6;
   margin-right: auto;
-  /* background-color: #F5F7FA; */
   margin-left: auto;
   box-shadow: 0 2px 2px -1px rgb(152 162 179 / 30%), 0 1px 5px -2px rgb(152 162 179 / 30%);
 }
@@ -155,4 +146,53 @@ body {
 
 .showForm {
   display: block;
+}
+
+/********** GRID TILES ************/
+.grid-tiles {
+  margin-right: 30%;
+  margin-left: 23%;
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.grid-tile {
+  padding: 8px;
+  width: 12rem;
+  height: 10rem;
+  border: 1px solid #d3dae6;
+  border-radius: 8px;
+  box-shadow: 1px 2px 2px 1px rgb(152 162 179 / 30%), 0 1px 5px 2px rgb(152 162 179 / 30%);
+}
+
+@media(min-width: 600px) {
+  .grid-tiles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(min-width: 900px) {
+  .grid-tiles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.grid-tile-title {
+  margin: 14px 0;
+  font-weight: bolder;
+  font-size: 20px;
+  text-align: center;
+}
+
+.grid-tile-paragraph {
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+.hideGrid {
+  display: none;
+}
+
+.showGrid {
+  display: grid;
 }

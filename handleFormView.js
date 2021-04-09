@@ -24,7 +24,7 @@ const handleForm = (function() {
   return {
     show: showForm,
     hide: hideForm,
-  }
+  };
 })();
 
 

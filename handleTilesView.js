@@ -24,7 +24,7 @@ const handleTiles = (function() {
   return {
     show: showTiles,
     hide: hideTiles,
-  }
+  };
 })();
 
 

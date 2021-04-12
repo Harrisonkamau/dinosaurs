@@ -124,6 +124,10 @@ body {
   padding-left: 16px;
 }
 
+.form__fixed-input {
+  max-width: 90%;
+}
+
 .form-input:focus,
 .form-input:active {
   outline: none;

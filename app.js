@@ -3,8 +3,10 @@ import validateForm from './validateForm.js';
 import populateValidationErrors from './populateValidationErrors.js';
 import form from './handleFormView.js';
 import grid from './handleTilesView.js';
+import User from './objects/user.js';
+import tiles from './renderTiles.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // grid should be hidden by default
   grid.hide();
 
@@ -17,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const diet = document.getElementById('diet');
 
   // handle form validation, grid display and form hiding
-  submitButton.addEventListener('click', (event) => {
+  submitButton.addEventListener('click', async (event) => {
     event.preventDefault();
 
     const userData = {
@@ -37,16 +39,21 @@ document.addEventListener('DOMContentLoaded', () => {
         errors: result.errors,
         fields: ['name', 'weight', 'diet', 'inches', 'feet'],
       });
-    } else {
-      form.hide();
+    }
 
-      // CLEAR ANY ERROR SPANS
+    if(result && result.formData && Object.keys(result.formData).length > 0) {
+      // CLEAR ANY ERROR SPANS & hide form
       const errorSpans = document.getElementsByClassName('form-input__span');
       const parentDivs = document.getElementsByClassName('form-input');
       Array.from(errorSpans).forEach((errorSpan) => errorSpan.innerText = '');
       Array.from(parentDivs).forEach((parentDiv) => parentDiv.classList.remove('form-input_error_border'));
 
+      form.hide();
       grid.show();
+
+      const humanData = new User(userData);
+      const gridTiles = await tiles.render(humanData);
+      gridTiles.generateRow();
     }
   });
 
@@ -54,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   getStarted.addEventListener('click', (event) => {
     event.preventDefault();
 
+    grid.hide();
     form.show();
   });
 });

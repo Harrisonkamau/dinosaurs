@@ -1,5 +1,5 @@
 {
-  "Dinos": [
+  "dinos": [
       {
           "species": "Triceratops",
           "weight": 13000,
@@ -62,15 +62,15 @@
           "where": "North America",
           "when": "Late Cretaceous",
           "fact": "Actually a flying reptile, the Pteranodon is not a dinosaur."
-      },
-      {
-          "species": "Pigeon",
-          "weight": 0.5,
-          "height": 9,
-          "diet": "herbavor",
-          "where": "World Wide",
-          "when": "Holocene",
-          "fact": "All birds are living dinosaurs."
       }
-  ]
+  ],
+  "pigeon": {
+        "species": "Pigeon",
+        "weight": 0.5,
+        "height": 9,
+        "diet": "herbavor",
+        "where": "World Wide",
+        "when": "Holocene",
+        "fact": "All birds are living dinosaurs."
+  }
 }

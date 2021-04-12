@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const humanData = new User(userData);
       const gridTiles = await tiles.render(humanData);
-      gridTiles.generateRow();
+      gridTiles.generateRows();
     }
   });
 

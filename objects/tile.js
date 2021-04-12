@@ -5,10 +5,9 @@
  *  - E.g ['parapraphOne', 'paragraphTwo']
  */
 class Tile {
-  constructor({ header, body = {}, ...rest }) {
+  constructor({ header, body = {} }) {
     this.header = header;
     this.body = body;
-    this.others = rest;
   }
 
   generate() {

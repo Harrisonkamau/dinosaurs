@@ -12,7 +12,7 @@ class Dinosaur extends Animal {
       const weightInKgs = convertor.poundsToKgs(this.weight);
       const difference = Math.floor(weightInKgs / this.human.weight);
 
-      return `A typical ${this.species} dinosaur weighs ${difference} times more than humans`;
+      return `A typical ${this.species} dinosaur weighs ${difference} times more than humans in kgs`;
     }
   }
 }

@@ -46,16 +46,14 @@ const tiles = ( function() {
         const humanTile = new Tile({
           header: humanData.name,
           body: {
-            paragraphs: [`${humanData.name} human eats ${humanData.diet} and weighs ${humanData.weight}`],
+            paragraphs: [`${humanData.name} human is an ${humanData.diet} and weighs ${humanData.weight} kgs`],
           },
         });
 
        dinoTiles.push(birdTile);
        dinoTiles.push(humanTile);
 
-       console.log('---------> dinoTiles: ', dinoTiles);
        const grid = new Grid(dinoTiles);
-       console.log('--------> grid: ', grid);
        return grid;
       }
     },

@@ -26,14 +26,14 @@ function _validateWeight(weight) {
 }
 
 function _validateDiet(diet) {
-  const hasDiet = ['herbivorous', 'omnivorous', 'carnivorous'].includes(diet.toLowerCase());
+  const hasDiet = ['herbivore', 'omnivore', 'carnivore'].includes(diet.toLowerCase());
   if (diet && hasDiet) {
     return { isValid: true };
   }
 
   return {
     isValid: false,
-    message: 'should include either "herbivorous", "omnivorous" or "carnivorous"',
+    message: 'should include either "herbivore", "omnivore" or "carnivore"',
   };
 }
 

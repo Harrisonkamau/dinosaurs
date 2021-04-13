@@ -26,4 +26,4 @@ And see this when you submit a valid form:
 ![Form Input](./screenshots/form-input.png)
 
 ##### Validation errors
-![Validation errors](./screenshots/validation_errors.png)
+![Validation errors](./screenshots/validation-errors-demo.png)

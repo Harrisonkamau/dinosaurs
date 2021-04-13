@@ -7,6 +7,12 @@ import { Dinosaur, Grid, Tile, Bird } from './objects/index.js';
 const tiles = ( function() {
   const getSampleData = async () => await (await fetch('./dino.json')).json();
 
+  const centerHumanTile = (allTiles, humanTile) => {
+    const humanTilePosition = allTiles.indexOf(humanTile);
+    const midPosition = Math.floor(allTiles.length / 2);
+    [allTiles[midPosition], allTiles[humanTilePosition]] = [allTiles[humanTilePosition], allTiles[midPosition]];
+    return allTiles;
+  };
 
   return {
     async render(humanData) {
@@ -53,7 +59,8 @@ const tiles = ( function() {
        dinoTiles.push(birdTile);
        dinoTiles.push(humanTile);
 
-       const grid = new Grid(dinoTiles);
+       const reOrderedTiles = centerHumanTile(dinoTiles, humanTile);
+       const grid = new Grid(reOrderedTiles);
        return grid;
       }
     },

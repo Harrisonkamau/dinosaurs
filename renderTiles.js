@@ -7,7 +7,7 @@ import { Dinosaur, Grid, Tile, Bird } from './objects/index.js';
 const tiles = ( function() {
   const getSampleData = async () => await (await fetch('./dino.json')).json();
 
-  const centerHumanTile = (allTiles, humanTile) => {
+  const centreHumanTile = (allTiles, humanTile) => {
     const humanTilePosition = allTiles.indexOf(humanTile);
     const midPosition = Math.floor(allTiles.length / 2);
     [allTiles[midPosition], allTiles[humanTilePosition]] = [allTiles[humanTilePosition], allTiles[midPosition]];
@@ -16,13 +16,6 @@ const tiles = ( function() {
 
   return {
     async render(humanData) {
-      /**
-       * create tiles
-       *  - 1 human tile
-       *  - 7 dinosaur tiles
-       *  - 1 bird tile
-       *
-       */
       if (humanData) {
         const { dinos: dinoData, pigeon: birdData } = await getSampleData();
         const dinoTiles = [];
@@ -39,7 +32,6 @@ const tiles = ( function() {
           dinoTiles.push(dinoTile);
         });
 
-        // create a grid
         const bird = new Bird(birdData);
         const birdTile = new Tile({
           header: bird.species,
@@ -59,7 +51,7 @@ const tiles = ( function() {
        dinoTiles.push(birdTile);
        dinoTiles.push(humanTile);
 
-       const reOrderedTiles = centerHumanTile(dinoTiles, humanTile);
+       const reOrderedTiles = centreHumanTile(dinoTiles, humanTile);
        const grid = new Grid(reOrderedTiles);
        return grid;
       }

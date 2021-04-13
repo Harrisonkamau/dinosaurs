@@ -33,7 +33,7 @@ class Dinosaur extends Animal {
       const sameDiet = this.human.diet === this.diet;
 
       if (sameDiet) {
-        this.fact = `${this.species} dinosaurs' diet that their diet is almost similar to humans.`;
+        this.fact = `${this.species} dinosaurs' diet is almost similar to that of humans.`;
       } else {
         this.fact = `${this.species} dinosaurs are ${formatDiet(this.diet)} while humans are ${formatDiet(this.human.diet)}.`;
       }

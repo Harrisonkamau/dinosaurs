@@ -18,7 +18,8 @@ Start up the server and go to the root route. You should be able to see somethin
 ![Get Started Page](./screenshots/get-started.png)
 
 And see this when you submit a valid form:
-![Grid Tiles](./screenshots/dynamic-grid.png)
+![Grid Tiles 1](./screenshots/grid-with-img-1.png)
+![Grid Tiles 2](./screenshots/grid-with-img-2.png)
 
 
 ### Demo

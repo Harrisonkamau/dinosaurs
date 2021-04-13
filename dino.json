@@ -7,7 +7,7 @@
           "diet": "herbivore",
           "where": "North America",
           "when": "Late Cretaceous",
-          "fact": "First discovered in 1889 by Othniel Charles Marsh"
+          "fact": "First discovered in 1889 by Othniel Charles Marsh."
       },
       {
           "species": "Tyrannosaurus Rex",
@@ -43,7 +43,7 @@
           "diet": "herbivore",
           "where": "North America, Europe, Asia",
           "when": "Late Jurasic to Early Cretaceous",
-          "fact": "The Stegosaurus had between 17 and 22 seperate places and flat spines."
+          "fact": "The Stegosaurus had between 17 and 22 separate places and flat spines."
       },
       {
           "species": "Elasmosaurus",

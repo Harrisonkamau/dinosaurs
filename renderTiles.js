@@ -14,23 +14,41 @@ const tiles = ( function() {
     return allTiles;
   };
 
+  const pickRandomDinos = (dinos, maximum = 3) => {
+    const randomItems = [];
+
+    for(let i = 0; i < maximum; i++) {
+      const randomDino = dinos[Math.floor(Math.random() * dinos.length)];
+
+      switch(i) {
+        case 0:
+          randomDino.compareWithHumanWeight();
+          break;
+        case 1:
+          randomDino.compareWithHumanDiet();
+          break;
+        case 2:
+          randomDino.compareWithHumanHeight();
+      }
+
+      randomItems.push(randomDino);
+    }
+
+    return randomItems;
+  };
+
   return {
     async render(humanData) {
       if (humanData) {
         const { dinos: dinoData, pigeon: birdData } = await getSampleData();
-        const dinoTiles = [];
-
-        dinoData.forEach((dino) => {
-          const dinoInstance = new Dinosaur(dino);
-          const dinoTile = new Tile({
-            header: dinoInstance.species,
-            body: {
-              paragraphs: [dinoInstance.fact],
-            },
-          });
-
-          dinoTiles.push(dinoTile);
-        });
+        const dinoInstances = dinoData.map((dino) => new Dinosaur({ ...dino, human: humanData }));
+        const dinosWithRandomFacts = new Set(dinoInstances.concat(pickRandomDinos(dinoInstances)));
+        const dinoTiles = Array.from(dinosWithRandomFacts).map((dinoInstance) => new Tile({
+          header: dinoInstance.species,
+          body: {
+            paragraphs: [dinoInstance.fact],
+          },
+        }));
 
         const bird = new Bird(birdData);
         const birdTile = new Tile({

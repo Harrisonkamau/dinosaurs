@@ -47,6 +47,7 @@ const tiles = ( function() {
           header: dinoInstance.species,
           body: {
             paragraphs: [dinoInstance.fact],
+            image: dinoInstance.image,
           },
         }));
 
@@ -55,6 +56,7 @@ const tiles = ( function() {
           header: bird.species,
             body: {
               paragraphs: [bird.fact],
+              image: bird.image,
             },
         });
 
@@ -63,6 +65,10 @@ const tiles = ( function() {
           header: humanData.name,
           body: {
             paragraphs: [`${humanData.name} human is an ${humanData.diet} and weighs ${humanData.weight} kgs`],
+            image: {
+              src: './images/human.jpg',
+              alt: 'Human Being',
+            },
           },
         });
 

@@ -10,8 +10,8 @@ function formatDiet(diet) {
 }
 
 class Dinosaur extends Animal {
-  constructor({ species, weight, height, diet, when, where, fact, human = {} }) {
-    super({ species, weight, height, diet, when, where, fact });
+  constructor({ species, weight, height, diet, when, where, fact, image, human = {} }) {
+    super({ species, weight, height, diet, when, where, fact, image });
     this.human = human;
   }
 

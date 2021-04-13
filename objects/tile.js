@@ -13,7 +13,9 @@ class Tile {
   generate() {
     const children = [];
     const h4 = this.createDomElement({ tag: 'h1', className: 'grid-tile-title', data: this.header });
+    const img = this.createDomElement({ tag: 'img', className: 'grid-tile-img', data: this.body.image });
 
+    children.push(img);
     children.push(h4);
 
     if (this.hasMultipleParagraphs()) {
@@ -41,6 +43,10 @@ class Tile {
    this.hasParagraphs() && this.body.paragraphs.length > 1;
   }
 
+  hasImage() {
+    this.body.image && this.body.image.length > 0;
+  }
+
   createDomElement({ tag, className = '', data = '', children = [] }) {
     const element = document.createElement(tag);
     element.classList.add(className);
@@ -48,6 +54,11 @@ class Tile {
 
     if (children && children.length > 0) {
       children.forEach((childElement) => element.appendChild(childElement));
+    }
+
+    if (tag === 'img' && data && data.src) {
+      element.src = data.src;
+      element.alt = data.alt;
     }
 
     return element;

@@ -177,9 +177,17 @@ body {
   overflow: hidden;
 }
 
+@media(min-width: 320px) {
+  .grid-tiles {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0 60% 0 10%;
+  }
+}
+
 @media(min-width: 600px) {
   .grid-tiles {
     grid-template-columns: repeat(2, 1fr);
+    margin: 0 60% 0 10%;
   }
 }
 

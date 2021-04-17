@@ -91,7 +91,6 @@ const tiles = (function () {
           header: humanData.name,
           metadata: humanData,
           body: {
-            paragraphs: [`${humanData.name} is an ${humanData.diet} and weighs ${humanData.weight} kgs`],
             image: humanData.image,
           },
         });

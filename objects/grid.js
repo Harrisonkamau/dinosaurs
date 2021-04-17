@@ -36,10 +36,7 @@ class Grid {
    * Destroys a grid
    */
   clear() {
-    if (this.mainDiv.children) {
-      const childElements = Array.from(this.mainDiv.children);
-      childElements.forEach((child) => child.remove());
-    }
+    this.mainDiv.innerHTML = null;
   }
 }
 

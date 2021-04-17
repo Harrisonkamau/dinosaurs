@@ -5,6 +5,7 @@ import form from './handleFormView.js';
 import grid from './handleTilesView.js';
 import User from './objects/user.js';
 import tiles from './renderTiles.js';
+import tilesOverlay from './renderTileOverlay.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // grid should be hidden by default
@@ -53,11 +54,24 @@ document.addEventListener('DOMContentLoaded', async () => {
       form.hide();
       grid.show();
 
-      const humanData = new User(userData);
+      const humanData = new User({
+        ...userData,
+        image: {
+          src: './images/human.jpg',
+          alt: 'Human Being',
+        },
+      });
+
       const gridTiles = await tiles.render(humanData);
 
       if (!gridTiles.error) {
         gridTiles.generateRows();
+        const gridTileDivs = document.getElementsByClassName('grid-tile');
+
+        Array.from(gridTileDivs).forEach((gridTile) => {
+          gridTile.addEventListener('mouseover', () => tilesOverlay.show(gridTile));
+          gridTile.addEventListener('mouseout', () => tilesOverlay.hide(gridTile));
+        });
       }
     }
   });

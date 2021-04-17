@@ -1,3 +1,5 @@
+import createDomElement from '../createDomElement.js';
+
 /**
  * @param {String} header
  * @param {Object} body
@@ -13,25 +15,25 @@ class Tile {
 
   generate() {
     const children = [];
-    const header = this.createDomElement({ tag: 'h1', className: 'grid-tile-title', data: this.header });
-    const image = this.createDomElement({ tag: 'img', className: 'grid-tile-img', data: this.body.image });
+    const header = createDomElement({ tag: 'h1', className: 'grid-tile-title', data: this.header });
+    const image = createDomElement({ tag: 'img', className: 'grid-tile-img', data: this.body.image });
 
     children.push(image);
     children.push(header);
 
     if (this.hasMultipleParagraphs()) {
       this.body.paragraphs.forEach((paragraph) => {
-        const element = this.createDomElement({ tag: 'p', className: 'grid-tile-paragraph', data: paragraph });
+        const element = createDomElement({ tag: 'p', className: 'grid-tile-paragraph', data: paragraph });
         children.push(element);
       });
     }
 
     if (this.hasParagraphs() && !this.hasMultipleParagraphs()) {
-      const paragraph = this.createDomElement({ tag: 'p', className: 'grid-tile-paragraph', data: this.body.paragraphs[0] });
+      const paragraph = createDomElement({ tag: 'p', className: 'grid-tile-paragraph', data: this.body.paragraphs[0] });
       children.push(paragraph);
     }
 
-    const parentDiv = this.createDomElement({ children, tag: 'div', className: 'grid-tile' });
+    const parentDiv = createDomElement({ children, tag: 'div', className: 'grid-tile', metadata: this.metadata });
 
     return parentDiv;
   }
@@ -46,27 +48,6 @@ class Tile {
 
   hasImage() {
     return this.body && this.body.image;
-  }
-
-  createDomElement = ({ tag, className = '', id = '', data = '', children = [] }) => {
-    const element = document.createElement(tag);
-    element.classList.add(className);
-    element.innerText = data;
-
-    if (children && children.length > 0) {
-      children.forEach((childElement) => element.appendChild(childElement));
-    }
-
-    if (tag === 'img' && data && data.src) {
-      element.src = data.src;
-      element.alt = data.alt;
-    }
-
-    if (id) {
-      element.setAttribute('id', id);
-    }
-
-    return element;
   }
 }
 

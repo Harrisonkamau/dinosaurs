@@ -167,6 +167,23 @@ body {
   border: 1px solid #d3dae6;
   border-radius: 8px;
   box-shadow: 1px 2px 2px 1px rgb(152 162 179 / 30%), 0 1px 5px 2px rgb(152 162 179 / 30%);
+  transition: 0.5s ease;
+  transition-delay: 0.2s;
+}
+
+.grid-tile:hover {
+  transition-delay: 0.2s;
+  transition: smooth;
+}
+
+.grid-tile-metadata {
+  transition-delay: 0.2s;
+}
+
+.grid-tile-metadata_paragraph {
+  text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
 .grid-tile-img {

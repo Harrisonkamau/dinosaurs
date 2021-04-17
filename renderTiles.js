@@ -49,6 +49,7 @@ const tiles = (function () {
         const dinosWithRandomFacts = new Set(dinoInstances.concat(pickRandomDinos(dinoInstances)));
         const dinoTiles = Array.from(dinosWithRandomFacts).map((dinoInstance) => new Tile({
           header: dinoInstance.species,
+          metadata: dinoInstance,
           body: {
             paragraphs: [dinoInstance.fact],
             image: dinoInstance.image,
@@ -58,21 +59,19 @@ const tiles = (function () {
         const bird = new Bird(birdData);
         const birdTile = new Tile({
           header: bird.species,
-            body: {
-              paragraphs: [bird.fact],
-              image: bird.image,
-            },
+          metadata: bird,
+          body: {
+            paragraphs: [bird.fact],
+            image: bird.image,
+          },
         });
-
 
         const humanTile = new Tile({
           header: humanData.name,
+          metadata: humanData,
           body: {
-            paragraphs: [`${humanData.name} human is an ${humanData.diet} and weighs ${humanData.weight} kgs`],
-            image: {
-              src: './images/human.jpg',
-              alt: 'Human Being',
-            },
+            paragraphs: [`${humanData.name} is an ${humanData.diet} and weighs ${humanData.weight} kgs`],
+            image: humanData.image,
           },
         });
 

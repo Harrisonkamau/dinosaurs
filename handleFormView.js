@@ -1,3 +1,6 @@
+/**
+ * Handles display or hiding of form based on its validation
+ */
 const handleForm = (function () {
   /**
    * Hides the form

@@ -1,3 +1,9 @@
+/**
+ * Create a given number of spans to display form validation errors
+ * @param {Object.<any>} errors - an object of validation errors to render
+ * @param {Array.<any>} fields - an array of form fields
+ * @returns {Object.<any>} DOM element with error spans populated
+ */
 function populateValidationErrors({ errors, fields }) {
   fields.forEach((field) => {
     const errorSpan = document.createElement('span');

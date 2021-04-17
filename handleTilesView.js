@@ -1,3 +1,6 @@
+/**
+ * Handles display or hiding of grid based on form validation
+ */
 const handleTiles = (function () {
   /**
    * Hides the grid/tiles

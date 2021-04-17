@@ -1,18 +1,28 @@
 import createDomElement from '../createDomElement.js';
 
 /**
- * @param {String} header
- * @param {Object} body
- * @param {Array.<string>} body.paragraphs
- *  - E.g ['parapraphOne', 'paragraphTwo']
+ * Represents a tile
  */
 class Tile {
+  /**
+   * Creating a tile object
+   * @param {String} header - the heading of the tile
+   * @param {Object} body - a body of the tile
+   * @param {Object} body.image - the image of the object to render in a tile
+   * @param {String} body.image - the image of the object to render in a tile
+   * @param {Array.<string>} body.paragraphs - an array of paragraphs (comma separated)
+   * @param {Object.<any>} metadata - the metadata of the object being rendered in a tile
+   * @returns {Tile} a Tile object
+   */
   constructor({ header, body = {}, metadata = {} }) {
     this.header = header;
     this.body = body;
     this.metadata = metadata;
   }
 
+  /**
+   * Creates tile data (DOM elements)
+   */
   generate() {
     const children = [];
     const header = createDomElement({ tag: 'h1', className: 'grid-tile-title', data: this.header });

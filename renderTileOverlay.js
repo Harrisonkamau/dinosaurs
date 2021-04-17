@@ -1,6 +1,14 @@
 import createDomElement from './createDomElement.js';
 
+/**
+ * Renders a tile statistics on hover
+ */
 const renderTileOverlay = (function () {
+  /**
+   * Creates DOM elements for the respective object metadata
+   * @param {Object.<any>} metadata - the statistics object
+   * @returns {any} DOM element with metadata or an error object
+   */
   function generateMetadataDiv(metadata) {
     if (metadata && Object.keys(metadata).length > 0) {
       const forbiddenKeys = ['image', 'human', 'fact', 'height'];
@@ -42,16 +50,31 @@ const renderTileOverlay = (function () {
     return { error: 'No metadata provided' };
   }
 
+  /**
+   * Checks whether a tile has metadata DOM element
+   * @param {Object.<any>} element - DOM Element
+   * @returns {Boolean} true or false
+   */
   function hasMetadataDiv(element) {
     const classNames = Array.from(element.children).map(({ className }) => className);
     return classNames.includes('grid-tile-metadata');
   }
 
+  /**
+   * Retrieves all the children of the element before adding metadata DOM element
+   * @param {Object.<any>} element - DOM Element
+   * @returns {Array.<any>} an array of DOM elements
+   */
   function getOriginalChildren(element) {
     const originalChildren = Array.from(element.children).filter(({ className }) => !className.includes('metadata'));
     return originalChildren;
   }
 
+  /**
+   * Hides all the default tile DOM element children
+   * @param {Object.<any>} element - DOM Element
+   * @returns {Object.<any>} a DOM element with hidden children elements
+   */
   function hideOriginalChildren(element) {
     const originalChildren = getOriginalChildren(element);
 
@@ -63,7 +86,12 @@ const renderTileOverlay = (function () {
     });
   }
 
-  function hideMetadata(element) {
+  /**
+   * Removes the metadata DOM element from the parent
+   * @param {Object.<any>} element - DOM Element
+   * @returns {Object.<any>} a DOM element without metadata element & its children
+   */
+  function removeMetadata(element) {
     const newElement = Array.from(element.children).map((child) => {
       if (child.className === 'grid-tile-metadata') {
         element.removeChild(child);
@@ -75,6 +103,12 @@ const renderTileOverlay = (function () {
     return newElement;
   }
 
+  /**
+   * Renders the statistics DOM elements as the first children
+   * - Hides the default tile children elements
+   * @param {Object.<any>} element - DOM Element
+   * @returns {Object.<any>} a DOM element with metadata element minus the original children
+   */
   function renderMetadataTags(element, children) {
     if (!hasMetadataDiv(element)) {
       children.forEach((child) => {
@@ -85,9 +119,15 @@ const renderTileOverlay = (function () {
     }
   }
 
+  /**
+   * Removes the statistics DOM element if found &
+   * Renders the default tile elements before hover
+   * @param {Object.<any>} element - DOM Element
+   * @returns {Object.<any>} a DOM element with default tile elements minus the statistics elements
+   */
   function renderOriginalChildren(element) {
     if (hasMetadataDiv(element)) {
-      hideMetadata(element);
+      removeMetadata(element);
     }
 
     Array.from(element.children).forEach((child) => {
@@ -96,9 +136,17 @@ const renderTileOverlay = (function () {
   }
 
   return {
+    /**
+     * Hides statistics elements on mouse out
+     * @param {Object.<any>} gridTile - DOM Element
+     */
     hide(gridTile) {
       renderOriginalChildren(gridTile);
     },
+    /**
+     * Generates & shows statistics elements on mouse over
+     * @param {Object.<any>} gridTile - DOM Element
+     */
     show(gridTile) {
       const metadataDiv = generateMetadataDiv(gridTile.metadata);
       renderMetadataTags(gridTile, [metadataDiv]);

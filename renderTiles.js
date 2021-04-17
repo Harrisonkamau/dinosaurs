@@ -1,15 +1,25 @@
 import { Dinosaur, Grid, Tile, Bird } from './objects/index.js';
 
 /**
- * Handle generation of tiles & their placement in a grid
+ * Handles generation of tiles & their placement in a grid
  * - manage the position of specific tiles such as human tile(should be at the center of the grid)
  */
 const tiles = (function () {
+  /**
+   * Reads Dinosaur data from `dino.json` file
+   * @returns {Object} An object of containing dinos (array of objects) & pigeon (an object)
+   */
   const getSampleData = async () => {
     const result = await (await fetch('./dino.json')).json();
     return result;
   };
 
+  /**
+   * Places human tile at the center of the 9 tiles
+   * @param {Array.<Tile>} allTiles - An array of tile objects
+   * @param {Object.<Tile>} humanTile - an tile with human data
+   * @returns {Array.<Tile>} an array of arranged tiles with the human tile at the middle
+   */
   const centreHumanTile = (allTiles, humanTile) => {
     const copyTiles = [...allTiles];
     const humanTilePosition = copyTiles.indexOf(humanTile);
@@ -18,6 +28,12 @@ const tiles = (function () {
     return copyTiles;
   };
 
+  /**
+   * Picks random dinosaur objects to compare with Human data
+   * @param {Array.<Dino>} dinos - Array of dino objects
+   * @param {number} maximum - number of random dinosaurs to pick
+   * @returns {any} Generates random facts for random dinosaurs
+   */
   const pickRandomDinos = (dinos, maximum = 3) => {
     const randomItems = [];
 
@@ -42,6 +58,11 @@ const tiles = (function () {
   };
 
   return {
+    /**
+     * Renders a grid of tiles
+     * @param {Object.<User>} humanData - A User object
+     * @returns {Object.<any>} grid object or an error object
+     */
     async render(humanData) {
       if (humanData) {
         const { dinos: dinoData, pigeon: birdData } = await getSampleData();

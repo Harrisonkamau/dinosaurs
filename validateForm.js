@@ -1,10 +1,20 @@
 const DEFAULT_ERROR_MESSAGE = Object.freeze('This field is required');
 const REQUIRED_FORM_FIELDS = Object.freeze(['name', 'weight', 'height', 'diet']);
 
+/**
+ * Combines multiple objects in an array into one array
+ * @param {Array.<object>} array - An array of objects to merge
+ * @returns {Array.<object>} a single array of objects
+ */
 function mergeArrayObjects(array) {
   return array.reduce((obj, current) => Object.assign(obj, current), {});
 }
 
+/**
+ * Checks if a name is valid (has more than 4 characters)
+ * @param {string} name - Name to validate
+ * @returns {object} isValid: boolean and/or message
+ */
 function validateName(name) {
   if (name && name.length > 4) {
     return { isValid: true };
@@ -16,6 +26,11 @@ function validateName(name) {
   };
 }
 
+/**
+ * Checks if a weight is valid (greater than zero)
+ * @param {number} weight - weight to validate
+ * @returns {object} isValid: boolean and/or message
+ */
 function validateWeight(weight) {
   if (weight && weight > 0) {
     return { isValid: true };
@@ -24,6 +39,11 @@ function validateWeight(weight) {
   return { isValid: false, message: 'must be greater than zero' };
 }
 
+/**
+ * Checks if a diet is valid (is either 'herbivore', 'omnivore' or 'carnivore')
+ * @param {number} weight - weight to validate
+ * @returns {object} isValid: boolean and/or message
+ */
 function validateDiet(diet) {
   const hasDiet = ['herbivore', 'omnivore', 'carnivore'].includes(diet.toLowerCase());
   if (diet && hasDiet) {
@@ -36,6 +56,13 @@ function validateDiet(diet) {
   };
 }
 
+/**
+ * Checks if a diet is valid (is either 'herbivore', 'omnivore' or 'carnivore')
+ * @param {object} height - height to validate
+ * @param {number} height.feet - height in feet
+ * @param {number} height.inches - height in inches
+ * @returns {object} isValid: boolean and/or message
+ */
 function validateHeight(height) {
   const errors = [];
   let isValid = true;
@@ -59,6 +86,17 @@ function validateHeight(height) {
   };
 }
 
+/**
+ * Validates form fields
+ * @param {object} data - User data to validate
+ * @param {number} data.name - user name
+ * @param {number} data.diet - user diet
+ * @param {object} data.height - user height
+ * @param {string} data.height.feet - user height in inches
+ * @param {string} data.height.inches - user height in inches
+ * @param {number} data.weight - user weright
+ * @returns {object} data: object and/or errors: object
+ */
 function validateFields(data) {
   const formData = [];
   const errors = [];
@@ -112,6 +150,17 @@ function validateFields(data) {
   };
 }
 
+/**
+ * Validates the form fields
+ * @param {object} data - User data to validate
+ * @param {number} data.name - user name
+ * @param {number} data.diet - user diet
+ * @param {object} data.height - user height
+ * @param {string} data.height.feet - user height in inches
+ * @param {string} data.height.inches - user height in inches
+ * @param {number} data.weight - user weright
+ * @returns {object} data: object and/or errors: object
+ */
 function validateForm(data) {
   if (data) {
     const result = {};

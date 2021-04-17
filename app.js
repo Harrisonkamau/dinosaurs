@@ -41,11 +41,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     }
 
-    if(result && result.formData && Object.keys(result.formData).length > 0) {
+    if (result && result.formData && Object.keys(result.formData).length > 0) {
       // CLEAR ANY ERROR SPANS & hide form
       const errorSpans = document.getElementsByClassName('form-input__span');
       const parentDivs = document.getElementsByClassName('form-input');
-      Array.from(errorSpans).forEach((errorSpan) => errorSpan.innerText = '');
+      Array.from(errorSpans).forEach((errorSpan) => {
+        errorSpan.innerText = '';
+      });
       Array.from(parentDivs).forEach((parentDiv) => parentDiv.classList.remove('form-input_error_border'));
 
       form.hide();
@@ -53,7 +55,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       const humanData = new User(userData);
       const gridTiles = await tiles.render(humanData);
-      gridTiles.generateRows();
+
+      if (!gridTiles.error) {
+        gridTiles.generateRows();
+      }
     }
   });
 

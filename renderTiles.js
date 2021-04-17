@@ -4,23 +4,27 @@ import { Dinosaur, Grid, Tile, Bird } from './objects/index.js';
  * Handle generation of tiles & their placement in a grid
  * - manage the position of specific tiles such as human tile(should be at the center of the grid)
  */
-const tiles = ( function() {
-  const getSampleData = async () => await (await fetch('./dino.json')).json();
+const tiles = (function () {
+  const getSampleData = async () => {
+    const result = await (await fetch('./dino.json')).json();
+    return result;
+  };
 
   const centreHumanTile = (allTiles, humanTile) => {
-    const humanTilePosition = allTiles.indexOf(humanTile);
-    const midPosition = Math.floor(allTiles.length / 2);
-    [allTiles[midPosition], allTiles[humanTilePosition]] = [allTiles[humanTilePosition], allTiles[midPosition]];
-    return allTiles;
+    const copyTiles = [...allTiles];
+    const humanTilePosition = copyTiles.indexOf(humanTile);
+    const midPosition = Math.floor(copyTiles.length / 2);
+    [copyTiles[midPosition], copyTiles[humanTilePosition]] = [copyTiles[humanTilePosition], copyTiles[midPosition]];
+    return copyTiles;
   };
 
   const pickRandomDinos = (dinos, maximum = 3) => {
     const randomItems = [];
 
-    for(let i = 0; i < maximum; i++) {
+    for (let i = 0; i < maximum; i++) {
       const randomDino = dinos[Math.floor(Math.random() * dinos.length)];
 
-      switch(i) {
+      switch (i) {
         case 0:
           randomDino.compareWithHumanWeight();
           break;
@@ -72,15 +76,17 @@ const tiles = ( function() {
           },
         });
 
-       dinoTiles.push(birdTile);
-       dinoTiles.push(humanTile);
+        dinoTiles.push(birdTile);
+        dinoTiles.push(humanTile);
 
-       const reOrderedTiles = centreHumanTile(dinoTiles, humanTile);
-       const grid = new Grid(reOrderedTiles);
-       return grid;
+        const reOrderedTiles = centreHumanTile(dinoTiles, humanTile);
+        const grid = new Grid(reOrderedTiles);
+        return grid;
       }
+
+      return { error: 'No Human data provided' };
     },
   };
-})();
+}());
 
 export default tiles;

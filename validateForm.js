@@ -5,9 +5,8 @@ function mergeArrayObjects(array) {
   return array.reduce((obj, current) => Object.assign(obj, current), {});
 }
 
-function _validateName(name) {
-  if(name && name.length > 4) {
-
+function validateName(name) {
+  if (name && name.length > 4) {
     return { isValid: true };
   }
 
@@ -17,7 +16,7 @@ function _validateName(name) {
   };
 }
 
-function _validateWeight(weight) {
+function validateWeight(weight) {
   if (weight && weight > 0) {
     return { isValid: true };
   }
@@ -25,7 +24,7 @@ function _validateWeight(weight) {
   return { isValid: false, message: 'must be greater than zero' };
 }
 
-function _validateDiet(diet) {
+function validateDiet(diet) {
   const hasDiet = ['herbivore', 'omnivore', 'carnivore'].includes(diet.toLowerCase());
   if (diet && hasDiet) {
     return { isValid: true };
@@ -37,7 +36,7 @@ function _validateDiet(diet) {
   };
 }
 
-function _validateHeight(height) {
+function validateHeight(height) {
   const errors = [];
   let isValid = true;
 
@@ -52,7 +51,6 @@ function _validateHeight(height) {
         isValid = false;
       }
     }
-
   });
 
   return {
@@ -61,16 +59,16 @@ function _validateHeight(height) {
   };
 }
 
-function _validateFields(data) {
+function validateFields(data) {
   const formData = [];
   const errors = [];
 
   REQUIRED_FORM_FIELDS.forEach((field) => {
     if (!Object.hasOwnProperty.call(data, field)) {
-        errors.push({ [field]: DEFAULT_ERROR_MESSAGE });
+      errors.push({ [field]: DEFAULT_ERROR_MESSAGE });
     } else {
       if (field === 'name') {
-        const nameValidationResult = _validateName(data[field]);
+        const nameValidationResult = validateName(data[field]);
         if (nameValidationResult.isValid) {
           formData.push({ [field]: data[field] });
         } else {
@@ -79,7 +77,7 @@ function _validateFields(data) {
       }
 
       if (field === 'diet') {
-        const dietValidationResult = _validateDiet(data[field]);
+        const dietValidationResult = validateDiet(data[field]);
         if (dietValidationResult.isValid) {
           formData.push({ [field]: data[field] });
         } else {
@@ -88,7 +86,7 @@ function _validateFields(data) {
       }
 
       if (field === 'height') {
-        const { isValid, errors: heightErrors } = _validateHeight(data[field]);
+        const { isValid, errors: heightErrors } = validateHeight(data[field]);
         if (isValid) {
           formData.push({ feet: data[field].feet });
           formData.push({ inches: data[field].inches });
@@ -98,7 +96,7 @@ function _validateFields(data) {
       }
 
       if (field === 'weight') {
-        const weightValidationResult = _validateWeight(data[field]);
+        const weightValidationResult = validateWeight(data[field]);
         if (weightValidationResult.isValid) {
           formData.push({ [field]: data[field] });
         } else {
@@ -118,7 +116,7 @@ function validateForm(data) {
   if (data) {
     const result = {};
 
-    const { errors, formData } = _validateFields(data);
+    const { errors, formData } = validateFields(data);
 
     Object.assign(result, {
       formData: mergeArrayObjects(formData),

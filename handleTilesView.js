@@ -1,4 +1,4 @@
-const handleTiles = (function() {
+const handleTiles = (function () {
   /**
    * Hides the grid/tiles
    * - sets the class grid/tiles to display 'none'
@@ -25,7 +25,6 @@ const handleTiles = (function() {
     show: showTiles,
     hide: hideTiles,
   };
-})();
-
+}());
 
 export default handleTiles;

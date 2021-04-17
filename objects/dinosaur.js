@@ -1,7 +1,7 @@
 import convertor from '../convertor.js';
 import Animal from './animal.js';
 
-function _isPositive(num) {
+function isPositive(num) {
   return num > 0;
 }
 
@@ -20,7 +20,7 @@ class Dinosaur extends Animal {
       const weightInKgs = convertor.poundsToKgs(this.weight);
       const difference = weightInKgs / this.human.weight;
 
-      if (_isPositive(difference)) {
+      if (isPositive(difference)) {
         this.fact = `A typical ${this.species} dinosaur weighs atleast ${Math.floor(difference)} times more than humans.`;
       } else {
         this.fact = `A human weighing ${this.human.weight} kgs would have been heavier than a ${this.species} dinosaur.`;
@@ -46,7 +46,7 @@ class Dinosaur extends Animal {
       const humanHeightInFeet = convertor.inchesToFeet(this.human.height.inches) + this.human.height.feet;
 
       const difference = dinoHeightInFeet - humanHeightInFeet;
-      if (_isPositive(difference)) {
+      if (isPositive(difference)) {
         this.fact = `A typical ${this.species} dinosaur is atleast ${Math.floor(difference)} feet taller than a human being.`;
       } else {
         this.fact = `A human with a height of ${humanHeightInFeet} feet would have been taller than a ${this.species} dinosaur.`;

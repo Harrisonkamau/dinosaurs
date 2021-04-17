@@ -6,7 +6,7 @@ const convertor = (function () {
   return {
     poundsToKgs(pounds) {
       // round off to the nearest 100
-      return Math.round((pounds / ONE_KG_IN_POUNDS)/ 100) * 100;
+      return Math.round((pounds / ONE_KG_IN_POUNDS) / 100) * 100;
     },
 
     inchesToFeet(inches) {
@@ -15,8 +15,8 @@ const convertor = (function () {
 
     metreToFeet(metre) {
       return Math.floor(metre * ONE_METRE_IN_FEET);
-    }
+    },
   };
-})();
+}());
 
 export default convertor;

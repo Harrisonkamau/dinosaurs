@@ -5,29 +5,30 @@
  *  - E.g ['parapraphOne', 'paragraphTwo']
  */
 class Tile {
-  constructor({ header, body = {} }) {
+  constructor({ header, body = {}, metadata = {} }) {
     this.header = header;
     this.body = body;
+    this.metadata = metadata;
   }
 
   generate() {
     const children = [];
-    const h4 = this.createDomElement({ tag: 'h1', className: 'grid-tile-title', data: this.header });
-    const img = this.createDomElement({ tag: 'img', className: 'grid-tile-img', data: this.body.image });
+    const header = this.createDomElement({ tag: 'h1', className: 'grid-tile-title', data: this.header });
+    const image = this.createDomElement({ tag: 'img', className: 'grid-tile-img', data: this.body.image });
 
-    children.push(img);
-    children.push(h4);
+    children.push(image);
+    children.push(header);
 
     if (this.hasMultipleParagraphs()) {
       this.body.paragraphs.forEach((paragraph) => {
-        const p = this.createDomElement({ tag: 'p', className: 'grid-tile-paragraph', data: paragraph });
-        children.push(p);
+        const element = this.createDomElement({ tag: 'p', className: 'grid-tile-paragraph', data: paragraph });
+        children.push(element);
       });
     }
 
-    if(this.hasParagraphs() && !this.hasMultipleParagraphs()) {
-      const p = this.createDomElement({ tag: 'p', className: 'grid-tile-paragraph', data: this.body.paragraphs[0] });
-      children.push(p);
+    if (this.hasParagraphs() && !this.hasMultipleParagraphs()) {
+      const paragraph = this.createDomElement({ tag: 'p', className: 'grid-tile-paragraph', data: this.body.paragraphs[0] });
+      children.push(paragraph);
     }
 
     const parentDiv = this.createDomElement({ children, tag: 'div', className: 'grid-tile' });
@@ -40,14 +41,14 @@ class Tile {
   }
 
   hasMultipleParagraphs() {
-   this.hasParagraphs() && this.body.paragraphs.length > 1;
+    return this.hasParagraphs() && this.body.paragraphs.length > 1;
   }
 
   hasImage() {
-    this.body.image && this.body.image.length > 0;
+    return this.body && this.body.image;
   }
 
-  createDomElement({ tag, className = '', data = '', children = [] }) {
+  createDomElement = ({ tag, className = '', id = '', data = '', children = [] }) => {
     const element = document.createElement(tag);
     element.classList.add(className);
     element.innerText = data;
@@ -59,6 +60,10 @@ class Tile {
     if (tag === 'img' && data && data.src) {
       element.src = data.src;
       element.alt = data.alt;
+    }
+
+    if (id) {
+      element.setAttribute('id', id);
     }
 
     return element;

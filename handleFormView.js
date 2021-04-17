@@ -1,4 +1,4 @@
-const handleForm = (function() {
+const handleForm = (function () {
   /**
    * Hides the form
    * - sets the class form to display 'none'
@@ -25,7 +25,6 @@ const handleForm = (function() {
     show: showForm,
     hide: hideForm,
   };
-})();
-
+}());
 
 export default handleForm;

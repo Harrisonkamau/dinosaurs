@@ -35,14 +35,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const result = validateForm(userData);
 
-    if (result && result.errors && Object.values(result.errors).length > 0) {
+    const hasErrors = result.errors && Object.values(result.errors).length > 0;
+
+    if (result && hasErrors) {
       populateValidationErrors({
         errors: result.errors,
         fields: ['name', 'weight', 'diet', 'inches', 'feet'],
       });
     }
 
-    if (result && result.formData && Object.keys(result.formData).length > 0) {
+    if (result && result.formData && !hasErrors && Object.keys(result.formData).length > 0) {
       // CLEAR ANY ERROR SPANS & hide form
       const errorSpans = document.getElementsByClassName('form-input__span');
       const parentDivs = document.getElementsByClassName('form-input');
